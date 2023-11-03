@@ -1,5 +1,5 @@
 import { NoMethods } from '../../../shared/types/noMethods';
-import { AdjustPrice } from './commands/adjustPriceSchema';
+import { AdjustPrice } from './commands/adjustPrice';
 import { IEvent } from '../../../shared/types/IEvent';
 import { PriceAdjusted } from './events/priceAdjusted';
 
