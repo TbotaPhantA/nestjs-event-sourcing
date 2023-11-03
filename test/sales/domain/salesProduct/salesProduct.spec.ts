@@ -7,23 +7,31 @@ describe('SalesProduct', () => {
     const priceTestCases = [
       {
         toString: () => '1 - should properly change the price',
-        command: AdjustPriceBuilder.defaultAll.with({ amount: 3 }).result,
-        product: SalesProductBuilder.defaultAll.with({ price: 1 }).result,
+        product: SalesProductBuilder.defaultAll.with({ price: 3 }).result,
+        command: AdjustPriceBuilder.defaultAll.with({ newPrice: 5 }).result,
         expectedNewProduct: SalesProductBuilder.defaultAll.with({
-          price: 4,
+          price: 5,
           uncommittedEvents: [
-            PriceAdjustedBuilder.defaultAll.with({ amount: 3 }).result,
+            PriceAdjustedBuilder.defaultAll.with({
+              oldPrice: 3,
+              newPrice: 5,
+              amount: 2,
+            }).result,
           ],
         }).result,
       },
       {
         toString: () => '2 - should properly change the price',
-        command: AdjustPriceBuilder.defaultAll.with({ amount: -2 }).result,
         product: SalesProductBuilder.defaultAll.with({ price: 4 }).result,
+        command: AdjustPriceBuilder.defaultAll.with({ newPrice: 1 }).result,
         expectedNewProduct: SalesProductBuilder.defaultAll.with({
-          price: 2,
+          price: 1,
           uncommittedEvents: [
-            PriceAdjustedBuilder.defaultAll.with({ amount: -2 }).result,
+            PriceAdjustedBuilder.defaultAll.with({
+              oldPrice: 4,
+              newPrice: 1,
+              amount: -3,
+            }).result,
           ],
         }).result,
       },

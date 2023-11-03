@@ -12,7 +12,8 @@ export class SalesProduct {
   }
 
   adjustPrice(command: AdjustPrice) {
-    this.price = this.price + command.amount;
-    this.uncommittedEvents.push(PriceAdjusted.fromCommand(command));
+    const oldPrice = this.price;
+    this.price = command.newPrice;
+    this.uncommittedEvents.push(PriceAdjusted.from(command, oldPrice));
   }
 }
