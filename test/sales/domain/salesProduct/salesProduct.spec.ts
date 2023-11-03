@@ -3,6 +3,9 @@ import { SalesProductBuilder } from '../../builders/salesProduct.builder';
 import { PriceAdjustedBuilder } from '../../builders/priceAdjusted.builder';
 
 describe('SalesProduct', () => {
+  // TODO: createProduct
+  // TODO: updateProductInfo
+
   describe('adjustPrice', () => {
     const priceTestCases = [
       {
