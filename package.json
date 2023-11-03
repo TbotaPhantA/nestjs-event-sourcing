@@ -26,6 +26,7 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1",
     "ts-fixture-builder": "^0.0.3",
+    "ulid": "^2.3.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {

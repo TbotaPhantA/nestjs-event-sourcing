@@ -4,10 +4,12 @@ import { IEvent } from '../../../shared/types/IEvent';
 import { PriceAdjusted } from './events/priceAdjusted';
 
 export class SalesProduct {
+  productId: number;
   price: number;
   uncommittedEvents: IEvent[] = [];
 
   constructor(raw: NoMethods<SalesProduct>) {
+    this.productId = raw.productId;
     this.price = raw.price;
   }
 
