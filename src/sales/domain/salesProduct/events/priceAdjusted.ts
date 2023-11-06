@@ -2,20 +2,31 @@ import { NoMethods } from '../../../../shared/types/noMethods';
 import { AdjustPrice } from '../commands/adjustPrice';
 import { IEvent } from '../../../../shared/types/IEvent';
 
-export class PriceAdjusted implements IEvent {
+interface PriceAdjustedData {
   readonly oldPrice: number;
   readonly amount: number;
   readonly newPrice: number;
+}
+
+export class PriceAdjusted implements IEvent<PriceAdjustedData> {
+  readonly aggregateId: string;
+  readonly data: PriceAdjustedData;
+  readonly version?: number;
 
   constructor(raw: NoMethods<PriceAdjusted>) {
-    this.oldPrice = raw.oldPrice;
-    this.amount = raw.amount;
-    this.newPrice = raw.newPrice;
+    this.aggregateId = raw.aggregateId;
+    this.data = raw.data;
+    if (raw.version) this.version = raw.version;
   }
 
-  static from(command: AdjustPrice, oldPrice: number): PriceAdjusted {
+  static from(
+    aggregateId: string,
+    command: AdjustPrice,
+    oldPrice: number,
+  ): PriceAdjusted {
     const amount = command.newPrice - oldPrice;
     const { newPrice } = command;
-    return new PriceAdjusted({ oldPrice, amount, newPrice });
+    const data = { oldPrice, amount, newPrice };
+    return new PriceAdjusted({ aggregateId, data });
   }
 }

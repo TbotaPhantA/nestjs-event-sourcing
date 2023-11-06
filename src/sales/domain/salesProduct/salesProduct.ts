@@ -4,7 +4,7 @@ import { IEvent } from '../../../shared/types/IEvent';
 import { PriceAdjusted } from './events/priceAdjusted';
 
 export class SalesProduct {
-  productId: number;
+  productId: string;
   price: number;
   uncommittedEvents: IEvent[] = [];
 
@@ -16,6 +16,8 @@ export class SalesProduct {
   adjustPrice(command: AdjustPrice) {
     const oldPrice = this.price;
     this.price = command.newPrice;
-    this.uncommittedEvents.push(PriceAdjusted.from(command, oldPrice));
+    this.uncommittedEvents.push(
+      PriceAdjusted.from(this.productId, command, oldPrice),
+    );
   }
 }

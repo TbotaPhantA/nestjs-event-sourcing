@@ -4,7 +4,7 @@ import { SalesProduct } from '../../../src/sales/domain/salesProduct/salesProduc
 export class SalesProductBuilder {
   static get defaultAll(): InjectionBuilder<SalesProduct> {
     return new InjectionBuilder<SalesProduct>(
-      new SalesProduct({ productId: 1, price: 1, uncommittedEvents: [] }),
+      new SalesProduct({ productId: 'ulid', price: 1, uncommittedEvents: [] }),
     );
   }
 }

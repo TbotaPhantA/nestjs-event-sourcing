@@ -15,10 +15,12 @@ describe('SalesProduct', () => {
         expectedNewProduct: SalesProductBuilder.defaultAll.with({
           price: 5,
           uncommittedEvents: [
-            PriceAdjustedBuilder.defaultAll.with({
-              oldPrice: 3,
-              newPrice: 5,
-              amount: 2,
+            PriceAdjustedBuilder.defaultOnlyRequired.with({
+              data: {
+                oldPrice: 3,
+                newPrice: 5,
+                amount: 2,
+              },
             }).result,
           ],
         }).result,
@@ -30,10 +32,12 @@ describe('SalesProduct', () => {
         expectedNewProduct: SalesProductBuilder.defaultAll.with({
           price: 1,
           uncommittedEvents: [
-            PriceAdjustedBuilder.defaultAll.with({
-              oldPrice: 4,
-              newPrice: 1,
-              amount: -3,
+            PriceAdjustedBuilder.defaultOnlyRequired.with({
+              data: {
+                oldPrice: 4,
+                newPrice: 1,
+                amount: -3,
+              },
             }).result,
           ],
         }).result,
