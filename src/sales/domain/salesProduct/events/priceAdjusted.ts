@@ -2,7 +2,7 @@ import { NoMethods } from '../../../../shared/types/noMethods';
 import { AdjustPrice } from '../commands/adjustPrice';
 import { IEvent } from '../../../../shared/types/IEvent';
 
-interface PriceAdjustedData {
+export interface PriceAdjustedData {
   readonly oldPrice: number;
   readonly amount: number;
   readonly newPrice: number;
