@@ -2,7 +2,7 @@ import { NoMethods } from '../../../shared/types/noMethods';
 import { AdjustPrice } from './commands/adjustPrice';
 import { IEvent } from '../../../shared/types/IEvent';
 import { PriceAdjusted } from './events/priceAdjusted';
-import { CreateProduct } from './commands/createProduct';
+import { CreateSalesProduct } from './commands/createSalesProduct';
 import { RandomService } from '../../infrastructure/random/random.service';
 import { SalesProductCreated } from './events/salesProductCreated';
 
@@ -25,7 +25,7 @@ export class SalesProduct {
     this.uncommittedEvents = raw.uncommittedEvents;
   }
 
-  static create(command: CreateProduct, deps: CreateDeps): SalesProduct {
+  static create(command: CreateSalesProduct, deps: CreateDeps): SalesProduct {
     const productId = deps.random.generateULID();
     const event = SalesProductCreated.from(command, productId);
 

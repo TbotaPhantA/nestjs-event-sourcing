@@ -1,6 +1,6 @@
 import { IEvent } from '../../../../shared/types/IEvent';
 import { NoMethods } from '../../../../shared/types/noMethods';
-import { CreateProduct } from '../commands/createProduct';
+import { CreateSalesProduct } from '../commands/createSalesProduct';
 
 export interface SalesProductCreatedData {
   productId: string;
@@ -20,7 +20,7 @@ export class SalesProductCreated implements IEvent<SalesProductCreatedData> {
     if (raw.version) this.version = raw.version;
   }
 
-  static from(command: CreateProduct, productId: string): SalesProductCreated {
+  static from(command: CreateSalesProduct, productId: string): SalesProductCreated {
     return new SalesProductCreated({
       aggregateId: productId,
       data: {
