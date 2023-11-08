@@ -64,7 +64,11 @@ describe('SalesProduct', () => {
           price: 5,
           uncommittedEvents: [
             PriceAdjustedBuilder.defaultOnlyRequired.with({
-              data: PriceAdjustedDataBuilder.defaultOnlyRequired.result,
+              data: PriceAdjustedDataBuilder.defaultOnlyRequired.with({
+                oldPrice: 3,
+                amount: 2,
+                newPrice: 5,
+              }).result,
             }).result,
           ],
         }).result,
@@ -77,7 +81,11 @@ describe('SalesProduct', () => {
           price: 1,
           uncommittedEvents: [
             PriceAdjustedBuilder.defaultOnlyRequired.with({
-              data: PriceAdjustedDataBuilder.defaultOnlyRequired.result,
+              data: PriceAdjustedDataBuilder.defaultOnlyRequired.with({
+                oldPrice: 4,
+                amount: -3,
+                newPrice: 1,
+              }).result,
             }).result,
           ],
         }).result,
