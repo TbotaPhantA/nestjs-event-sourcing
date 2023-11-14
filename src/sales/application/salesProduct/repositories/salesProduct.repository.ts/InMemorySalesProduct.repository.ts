@@ -1,8 +1,8 @@
 import { ISalesProductRepository } from './ISalesProduct.repository';
-import { SalesProduct } from '../../../domain/salesProduct/salesProduct';
-import { ITransaction } from '../../shared/types/ITransaction';
 import { Injectable } from '@nestjs/common';
-import { IEvent } from '../../../../shared/types/IEvent';
+import { IEvent } from '../../../../../shared/types/IEvent';
+import { SalesProduct } from '../../../../domain/salesProduct/salesProduct';
+import { ITransaction } from '../../shared/types/ITransaction';
 
 type AggregateId = string;
 type EventStream = IEvent[];

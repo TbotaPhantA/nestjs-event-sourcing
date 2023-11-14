@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { CreateSalesProduct } from '../../domain/salesProduct/commands/createSalesProduct';
-import { SalesProduct } from '../../domain/salesProduct/salesProduct';
-import { RandomService } from '../../infrastructure/random/random.service';
+import { CreateSalesProduct } from '../../../domain/salesProduct/commands/createSalesProduct';
+import { SalesProduct } from '../../../domain/salesProduct/salesProduct';
+import { RandomService } from '../../../infrastructure/random/random.service';
 import { ISalesProductRepository } from '../repositories/salesProduct.repository.ts/ISalesProduct.repository';
 import { CreateSalesProductOutputDto } from '../dto/createSalesProduct.output.dto';
 import { InjectSalesProductRepository } from '../shared/decorators/injectSalesProductRepository';
-import { ITransactionService } from '../../infrastructure/transaction/ITransaction.service';
-import { InjectTransactionService } from '../../infrastructure/transaction/shared/decorators/injectTransactionService';
+import { ITransactionService } from '../../../infrastructure/transaction/ITransaction.service';
+import { InjectTransactionService } from '../../../infrastructure/transaction/shared/decorators/injectTransactionService';
 import { ITransaction } from '../shared/types/ITransaction';
 
 @Injectable()

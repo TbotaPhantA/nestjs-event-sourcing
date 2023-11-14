@@ -1,5 +1,5 @@
 import { ITransactionService } from './ITransaction.service';
-import { ITransaction } from '../../application/shared/types/ITransaction';
+import { ITransaction } from '../../application/salesProduct/shared/types/ITransaction';
 import { IsolationLevel } from './isolationLevel.enum';
 import { Injectable } from '@nestjs/common';
 

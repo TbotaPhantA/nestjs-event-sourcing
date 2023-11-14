@@ -1,4 +1,4 @@
-import { SalesProduct } from '../../../domain/salesProduct/salesProduct';
+import { SalesProduct } from '../../../../domain/salesProduct/salesProduct';
 import { ITransaction } from '../../shared/types/ITransaction';
 
 export interface ISalesProductRepository {

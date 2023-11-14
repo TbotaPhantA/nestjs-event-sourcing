@@ -1,5 +1,5 @@
-import { NoMethods } from '../../../shared/types/noMethods';
-import { SalesProduct } from '../../domain/salesProduct/salesProduct';
+import { NoMethods } from '../../../../shared/types/noMethods';
+import { SalesProduct } from '../../../domain/salesProduct/salesProduct';
 
 export class CreateSalesProductOutputDto {
   productId: string;
