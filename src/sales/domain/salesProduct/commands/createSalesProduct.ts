@@ -5,11 +5,17 @@ import {
   MAX_INT_32,
   MAX_PRODUCT_DESCRIPTION_LENGTH,
 } from '../../../../shared/constants';
+import { ExtendedSchemaObject } from '../../../../shared/types/extendedSchemaObject';
+import { zodToOpenAPI } from 'nestjs-zod';
 
-const CreateSalesProduct = z.object({
+export const CreateSalesProductSchema = z.object({
   name: z.string().min(MIN_PRODUCT_NAME_LENGTH).max(MAX_PRODUCT_NAME_LENGTH),
   description: z.string().max(MAX_PRODUCT_DESCRIPTION_LENGTH),
   price: z.number().min(0).max(MAX_INT_32),
 });
 
-export type CreateSalesProduct = z.infer<typeof CreateSalesProduct>;
+export type CreateSalesProduct = z.infer<typeof CreateSalesProductSchema>;
+
+export const createSalesProductOpenApi: ExtendedSchemaObject = zodToOpenAPI(
+  CreateSalesProductSchema,
+);
