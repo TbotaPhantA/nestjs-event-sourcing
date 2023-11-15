@@ -14,7 +14,7 @@ export class SalesProductController {
     private readonly createSalesProductService: CreateSalesProductService,
   ) {}
 
-  @Post()
+  @Post('create-sales-product')
   @ApiOperation({ summary: 'Create sales product' })
   @ApiBody({ schema: createSalesProductOpenApi })
   @ApiResponse({
