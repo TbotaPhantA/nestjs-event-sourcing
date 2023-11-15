@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { RandomService } from './random/random.service';
+import { RandomService } from './random.service';
 
 @Module({
   providers: [RandomService],
