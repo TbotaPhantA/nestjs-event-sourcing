@@ -1,10 +1,12 @@
 import { NoMethods } from '../../../shared/types/noMethods';
 import { AdjustPrice } from './commands/adjustPrice';
-import { IEvent } from '../../../shared/types/IEvent';
 import { PriceAdjusted } from './events/priceAdjusted';
 import { CreateSalesProduct } from './commands/createSalesProduct';
 import { RandomService } from '../../infrastructure/random/random.service';
 import { SalesProductCreated } from './events/salesProductCreated';
+import { SalesProductEvent } from '../../application/salesProduct/shared/types/salesProductEvent';
+import { exhaustiveCheck } from '../../../shared/utils/exhaustiveCheck';
+import { CREATE_EVENT_CANNOT_BE_ADDED } from '../../../shared/errorMessages';
 
 interface CreateDeps {
   random: RandomService;
@@ -15,7 +17,7 @@ export class SalesProduct {
   name: string;
   description: string;
   price: number;
-  uncommittedEvents: IEvent[];
+  uncommittedEvents: SalesProductEvent[];
 
   constructor(raw: NoMethods<SalesProduct>) {
     this.productId = raw.productId;
@@ -41,7 +43,23 @@ export class SalesProduct {
   adjustPrice(command: AdjustPrice): void {
     const oldPrice = this.price;
     const event = PriceAdjusted.from(this.productId, command, oldPrice);
-    this.price = command.newPrice;
+    this.addEvent(event);
+  }
+
+  addEvent(event: SalesProductEvent): void {
+    if (event instanceof PriceAdjusted) {
+      return this.applyPriceAdjusted(event);
+    }
+
+    if (event instanceof SalesProductCreated) {
+      throw new Error(CREATE_EVENT_CANNOT_BE_ADDED);
+    }
+
+    throw exhaustiveCheck(event);
+  }
+
+  private applyPriceAdjusted(event: PriceAdjusted): void {
+    this.price = event.data.newPrice;
     this.uncommittedEvents.push(event);
   }
 }

@@ -3,6 +3,9 @@ import { AdjustPrice } from '../../../../src/sales/domain/salesProduct/commands/
 
 export class AdjustPriceBuilder {
   static get defaultAll(): InjectionBuilder<AdjustPrice> {
-    return new InjectionBuilder<AdjustPrice>({ newPrice: 1 });
+    return new InjectionBuilder<AdjustPrice>({
+      productId: '01HFA5JFPR63NGH7R4ZMZXN9ZH',
+      newPrice: 1,
+    });
   }
 }
