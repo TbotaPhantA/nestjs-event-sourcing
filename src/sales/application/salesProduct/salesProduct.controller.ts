@@ -6,12 +6,19 @@ import {
 import { CreateSalesProductService } from './services/createSalesProduct.service';
 import { CreateSalesProductOutputDto } from './dto/createSalesProduct.output.dto';
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { AdjustPriceOutputDto } from './dto/adjustPrice.output.dto';
+import {
+  AdjustPrice,
+  adjustPriceOpenApi,
+} from '../../domain/salesProduct/commands/adjustPrice';
+import { AdjustPriceService } from './services/adjustPrice.service';
 
 @Controller('sales/product')
 @ApiTags('sales/product')
 export class SalesProductController {
   constructor(
     private readonly createSalesProductService: CreateSalesProductService,
+    private readonly adjustPriceService: AdjustPriceService,
   ) {}
 
   @Post('create-sales-product')
@@ -25,5 +32,18 @@ export class SalesProductController {
     @Body() command: CreateSalesProduct,
   ): Promise<CreateSalesProductOutputDto> {
     return this.createSalesProductService.create(command);
+  }
+
+  @Post('adjust-price')
+  @ApiOperation({ summary: 'Adjust price' })
+  @ApiBody({ schema: adjustPriceOpenApi })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    type: AdjustPriceOutputDto,
+  })
+  async adjustPrice(
+    @Body() command: AdjustPrice,
+  ): Promise<AdjustPriceOutputDto> {
+    return this.adjustPriceService.create(command);
   }
 }
