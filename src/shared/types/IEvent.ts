@@ -1,5 +1,5 @@
 export interface IEvent<T extends object = object> {
-  aggregateId: string;
-  data: T;
-  version?: number;
+  readonly aggregateId: string;
+  readonly data: T;
+  readonly version?: number;
 }

@@ -3,10 +3,10 @@ import { NoMethods } from '../../../../shared/types/noMethods';
 import { CreateSalesProduct } from '../commands/createSalesProduct';
 
 export interface SalesProductCreatedData {
-  productId: string;
-  name: string;
-  description: string;
-  price: number;
+  readonly productId: string;
+  readonly name: string;
+  readonly description: string;
+  readonly price: number;
 }
 
 export class SalesProductCreated implements IEvent<SalesProductCreatedData> {
@@ -20,7 +20,10 @@ export class SalesProductCreated implements IEvent<SalesProductCreatedData> {
     if (raw.version) this.version = raw.version;
   }
 
-  static from(command: CreateSalesProduct, productId: string): SalesProductCreated {
+  static from(
+    command: CreateSalesProduct,
+    productId: string,
+  ): SalesProductCreated {
     return new SalesProductCreated({
       aggregateId: productId,
       data: {
