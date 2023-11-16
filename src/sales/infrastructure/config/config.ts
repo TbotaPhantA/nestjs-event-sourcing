@@ -1,7 +1,5 @@
-import dotenv from 'dotenv';
+import 'dotenv/config';
 import * as process from 'process';
-
-dotenv.config();
 
 const isRequired = (propName: keyof NodeJS.ProcessEnv): never => {
   throw new Error(`Config property ${propName} is required`);
