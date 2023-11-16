@@ -1,5 +1,5 @@
-import { IEvent } from '../../../../shared/types/IEvent';
-import { NoMethods } from '../../../../shared/types/noMethods';
+import { IEvent } from '../../../../infrastructure/shared/types/IEvent';
+import { NoMethods } from '../../../../infrastructure/shared/types/noMethods';
 import { CreateSalesProduct } from '../commands/createSalesProduct';
 import { RandomService } from '../../../infrastructure/random/random.service';
 

@@ -4,8 +4,8 @@ import {
   MAX_PRODUCT_NAME_LENGTH,
   MAX_INT_32,
   MAX_PRODUCT_DESCRIPTION_LENGTH,
-} from '../../../../shared/constants';
-import { ExtendedSchemaObject } from '../../../../shared/types/extendedSchemaObject';
+} from '../../../../infrastructure/shared/constants';
+import { ExtendedSchemaObject } from '../../../../infrastructure/shared/types/extendedSchemaObject';
 import { zodToOpenAPI } from 'nestjs-zod';
 
 export const CreateSalesProductSchema = z.object({

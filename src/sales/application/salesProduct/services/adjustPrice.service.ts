@@ -1,13 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { AdjustPrice } from '../../../domain/salesProduct/commands/adjustPrice';
-import { InjectTransactionService } from '../../../infrastructure/transaction/shared/decorators/injectTransactionService';
-import { ITransactionService } from '../../../infrastructure/transaction/ITransaction.service';
+import { InjectTransactionService } from '../../../../infrastructure/transaction/shared/decorators/injectTransactionService';
+import { ITransactionService } from '../../../../infrastructure/transaction/ITransaction.service';
 import { InjectSalesProductRepository } from '../shared/decorators/injectSalesProductRepository';
 import { ISalesProductRepository } from '../repositories/salesProduct.repository.ts/ISalesProduct.repository';
 import { ITransaction } from '../shared/types/ITransaction';
 import { AdjustPriceOutputDto } from '../dto/adjustPrice.output.dto';
 import { SalesProduct } from '../../../domain/salesProduct/salesProduct';
-import { PRODUCT_NOT_FOUND } from '../../../../shared/errorMessages';
+import { PRODUCT_NOT_FOUND } from '../../../../infrastructure/shared/errorMessages';
 import { RandomService } from '../../../infrastructure/random/random.service';
 
 @Injectable()

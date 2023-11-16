@@ -1,4 +1,4 @@
-import { ITransaction } from '../../application/salesProduct/shared/types/ITransaction';
+import { ITransaction } from '../../sales/application/salesProduct/shared/types/ITransaction';
 import { IsolationLevel } from './isolationLevel.enum';
 
 export interface ITransactionService {

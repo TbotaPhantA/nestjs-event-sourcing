@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { MAX_INT_32, ULID_LENGTH } from '../../../../shared/constants';
-import { ExtendedSchemaObject } from '../../../../shared/types/extendedSchemaObject';
+import { MAX_INT_32, ULID_LENGTH } from '../../../../infrastructure/shared/constants';
+import { ExtendedSchemaObject } from '../../../../infrastructure/shared/types/extendedSchemaObject';
 import { zodToOpenAPI } from 'nestjs-zod';
 
 const AdjustPriceSchema = z.object({

@@ -1,12 +1,12 @@
-import { NoMethods } from '../../../shared/types/noMethods';
+import { NoMethods } from '../../../infrastructure/shared/types/noMethods';
 import { AdjustPrice } from './commands/adjustPrice';
 import { PriceAdjusted } from './events/priceAdjusted';
 import { CreateSalesProduct } from './commands/createSalesProduct';
 import { RandomService } from '../../infrastructure/random/random.service';
 import { SalesProductCreated } from './events/salesProductCreated';
 import { SalesProductEvent } from '../../application/salesProduct/shared/types/salesProductEvent';
-import { exhaustiveCheck } from '../../../shared/utils/exhaustiveCheck';
-import { CREATE_EVENT_CANNOT_BE_ADDED } from '../../../shared/errorMessages';
+import { exhaustiveCheck } from '../../../infrastructure/shared/utils/exhaustiveCheck';
+import { CREATE_EVENT_CANNOT_BE_ADDED } from '../../../infrastructure/shared/errorMessages';
 
 interface SalesProductDeps {
   random: RandomService;

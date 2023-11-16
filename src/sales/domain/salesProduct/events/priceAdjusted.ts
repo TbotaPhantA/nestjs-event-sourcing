@@ -1,6 +1,6 @@
-import { NoMethods } from '../../../../shared/types/noMethods';
+import { NoMethods } from '../../../../infrastructure/shared/types/noMethods';
 import { AdjustPrice } from '../commands/adjustPrice';
-import { IEvent } from '../../../../shared/types/IEvent';
+import { IEvent } from '../../../../infrastructure/shared/types/IEvent';
 import { RandomService } from '../../../infrastructure/random/random.service';
 
 type FromDeps = { random: RandomService };

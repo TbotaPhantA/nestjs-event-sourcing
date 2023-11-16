@@ -1,10 +1,10 @@
 import { ISalesProductRepository } from './ISalesProduct.repository';
 import { Injectable } from '@nestjs/common';
-import { IEvent } from '../../../../../shared/types/IEvent';
+import { IEvent } from '../../../../../infrastructure/shared/types/IEvent';
 import { SalesProduct } from '../../../../domain/salesProduct/salesProduct';
 import { ITransaction } from '../../shared/types/ITransaction';
 import { SalesProductCreated } from '../../../../domain/salesProduct/events/salesProductCreated';
-import { FIRST_EVENT_MUST_BE_THE_CREATE_INSTANCE } from '../../../../../shared/errorMessages';
+import { FIRST_EVENT_MUST_BE_THE_CREATE_INSTANCE } from '../../../../../infrastructure/shared/errorMessages';
 import { SalesProductEvent } from '../../shared/types/salesProductEvent';
 
 type AggregateId = string;

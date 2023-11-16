@@ -1,4 +1,4 @@
-import { NoMethods } from '../../../../shared/types/noMethods';
+import { NoMethods } from '../../../../infrastructure/shared/types/noMethods';
 import { SalesProduct } from '../../../domain/salesProduct/salesProduct';
 import { ApiProperty } from '@nestjs/swagger';
 
