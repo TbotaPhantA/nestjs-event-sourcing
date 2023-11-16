@@ -18,6 +18,7 @@ export class PriceAdjustedBuilder {
   static get defaultOnlyRequired(): InjectionBuilder<PriceAdjusted> {
     return new InjectionBuilder<PriceAdjusted>(
       new PriceAdjusted({
+        id: 'ulid',
         aggregateId: 'ulid',
         data: PriceAdjustedDataBuilder.defaultOnlyRequired.result,
       }),

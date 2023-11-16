@@ -8,7 +8,7 @@ import { SalesProductEvent } from '../../application/salesProduct/shared/types/s
 import { exhaustiveCheck } from '../../../shared/utils/exhaustiveCheck';
 import { CREATE_EVENT_CANNOT_BE_ADDED } from '../../../shared/errorMessages';
 
-interface CreateDeps {
+interface SalesProductDeps {
   random: RandomService;
 }
 
@@ -27,9 +27,12 @@ export class SalesProduct {
     this.uncommittedEvents = raw.uncommittedEvents;
   }
 
-  static create(command: CreateSalesProduct, deps: CreateDeps): SalesProduct {
+  static create(
+    command: CreateSalesProduct,
+    deps: SalesProductDeps,
+  ): SalesProduct {
     const productId = deps.random.generateULID();
-    const event = SalesProductCreated.from(command, productId);
+    const event = SalesProductCreated.from(command, productId, deps);
 
     return new SalesProduct({
       productId,
@@ -40,9 +43,9 @@ export class SalesProduct {
     });
   }
 
-  adjustPrice(command: AdjustPrice): void {
+  adjustPrice(command: AdjustPrice, deps: SalesProductDeps): void {
     const oldPrice = this.price;
-    const event = PriceAdjusted.from(this.productId, command, oldPrice);
+    const event = PriceAdjusted.from(this.productId, command, oldPrice, deps);
     this.addEvent(event);
   }
 

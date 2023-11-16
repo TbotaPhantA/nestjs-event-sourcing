@@ -21,6 +21,7 @@ export class SalesProductController {
     private readonly adjustPriceService: AdjustPriceService,
   ) {}
 
+  // TODO: get products by filter (async) + websocket
   @Post('create-sales-product')
   @ApiOperation({ summary: 'Create sales product' })
   @ApiBody({ schema: createSalesProductOpenApi })

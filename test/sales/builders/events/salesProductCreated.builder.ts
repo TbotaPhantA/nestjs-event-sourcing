@@ -19,6 +19,7 @@ export class SalesProductCreatedBuilder {
   static get defaultOnlyRequired(): InjectionBuilder<SalesProductCreated> {
     return new InjectionBuilder<SalesProductCreated>(
       new SalesProductCreated({
+        id: 'ulid',
         aggregateId: 'id',
         data: SalesProductCreatedDataBuilder.defaultOnlyRequired.result,
       }),

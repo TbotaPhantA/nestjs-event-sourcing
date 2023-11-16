@@ -8,6 +8,7 @@ import { ITransaction } from '../shared/types/ITransaction';
 import { AdjustPriceOutputDto } from '../dto/adjustPrice.output.dto';
 import { SalesProduct } from '../../../domain/salesProduct/salesProduct';
 import { PRODUCT_NOT_FOUND } from '../../../../shared/errorMessages';
+import { RandomService } from '../../../infrastructure/random/random.service';
 
 @Injectable()
 export class AdjustPriceService {
@@ -16,6 +17,7 @@ export class AdjustPriceService {
     private readonly transactionService: ITransactionService,
     @InjectSalesProductRepository()
     private readonly repo: ISalesProductRepository,
+    private readonly random: RandomService,
   ) {}
 
   async create(command: AdjustPrice): Promise<AdjustPriceOutputDto> {
@@ -30,7 +32,7 @@ export class AdjustPriceService {
     transaction: ITransaction,
   ): Promise<AdjustPriceOutputDto> {
     const product = await this.getOneById(command.productId);
-    product.adjustPrice(command);
+    product.adjustPrice(command, { random: this.random });
     const savedProduct = await this.repo.save(product, transaction);
     return AdjustPriceOutputDto.from(savedProduct);
   }

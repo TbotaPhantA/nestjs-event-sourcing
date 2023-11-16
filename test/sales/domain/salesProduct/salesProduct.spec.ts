@@ -15,7 +15,7 @@ import { createFakeRandomService } from '../../fakes/createFakeRandomService';
 describe('SalesProduct', () => {
   // TODO: updateProductInfo
   describe('createProduct', () => {
-    const productId1 = 'id-1';
+    const productId1 = 'ulid';
 
     const testCases = [
       {
@@ -95,7 +95,10 @@ describe('SalesProduct', () => {
     test.each(priceTestCases)(
       '%s',
       ({ command, product, expectedNewProduct }) => {
-        product.adjustPrice(command);
+        const id = 'ulid';
+        const random = createFakeRandomService();
+        random.generateULID = jest.fn().mockReturnValue(id);
+        product.adjustPrice(command, { random });
         expect(product).toStrictEqual(expectedNewProduct);
       },
     );
