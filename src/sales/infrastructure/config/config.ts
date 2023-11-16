@@ -14,11 +14,13 @@ class Config {
 
   db = {
     host: process.env.DB_HOST ?? isRequired('DB_HOST'),
-    port: process.env.DB_PORT ?? isRequired('DB_PORT'),
+    port: Number(process.env.DB_PORT ?? isRequired('DB_PORT')),
     username: process.env.DB_USERNAME ?? isRequired('DB_USERNAME'),
     password: process.env.DB_PASSWORD ?? isRequired('DB_PASSWORD'),
     database: process.env.DB_DATABASE ?? isRequired('DB_DATABASE'),
-    synchronize: process.env.DB_SYNCHRONIZE ?? isRequired('DB_SYNCHRONIZE'),
+    synchronize: Boolean(
+      process.env.DB_SYNCHRONIZE ?? isRequired('DB_SYNCHRONIZE'),
+    ),
   };
 }
 
