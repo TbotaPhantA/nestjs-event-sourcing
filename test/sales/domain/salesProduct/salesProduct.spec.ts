@@ -13,7 +13,6 @@ import {
 import { createFakeRandomService } from '../../fakes/createFakeRandomService';
 
 describe('SalesProduct', () => {
-  // TODO: updateProductInfo
   describe('createProduct', () => {
     const productId1 = 'ulid';
 
