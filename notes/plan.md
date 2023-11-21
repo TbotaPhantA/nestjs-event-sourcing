@@ -4,3 +4,4 @@
 4. how to check name uniqueness without transaction anomalies. (maybe synchronously store aggregate names)
 5. add updateProductInfo command
 6. asynchronous get products by filter (async) + websocket
+7. check that product name is unique using asynchronous Reservation Pattern
